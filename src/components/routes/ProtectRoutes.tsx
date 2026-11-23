@@ -8,12 +8,11 @@ interface PROTECT_ROUTES {
 }
 
 function ProtectRoutes({ role, permission }: PROTECT_ROUTES) {
-  const isAllow = hasPermission(role, permission);
-
   if (!role) {
     return <Navigate to={"/"} replace />;
   }
 
+  const isAllow = hasPermission(role, permission);
   if (!isAllow) {
     return <Navigate to={"/unauthorized"} replace />;
   }
